@@ -3,10 +3,12 @@ import numpy as np
 
 dir = './example'
 sp = ['Brachy','Maize','Rice','Sorghum','Telongatum']
-gff_list = ['Brachy.gff','Maize.gff','Rice.gff','Sorghum.gff','Telongatum.gff']
 sp_ratio = [2,4,2,2,2]
 
 
+gff_list = []
+for i in sp:
+    gff_list.append(i+'.gff')
 
 def getFilterSequence(bed, group_filter_dir):
     bed = pd.read_csv(bed,sep='\t',header=None)[[0,1]]
@@ -62,7 +64,11 @@ for i in range(len(gff_list)):
 
 for i in gff_path_list:
     dataFrame = pd.read_csv(i, header=None, sep='\t')
-    name = dataFrame.at[0, 0]
+    # 强制将chr和基因名转为str类型
+    dataFrame[0] = dataFrame[0].astype(str)
+    dataFrame[1] = dataFrame[1].astype(str)
+
+    name = str(dataFrame.at[0, 0])
     number_index = 0
     for j in range(len(name) - 1, -1, -1):
         if name[j].isdigit():

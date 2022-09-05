@@ -71,7 +71,7 @@ class processFinalFilter:
                     block = temp[0].split(':')[0]
                     if block in block_list.keys():
                         block_list[block] += 1
-                        synWriteFile.write(block + ':' + str(block_list[block]) + ':' + temp[0].split(':')[-1] + ' ')
+                        synWriteFile.write(block + ':' + str(block_list[block]) + ':' + temp[0].split(':')[2] + ':'  + temp[0].split(':')[3] + ' ')
                         synWriteFile.write(' '.join(temp[1:]) + ' \n')
 
         with open(resultDir + '/' + sp + '.final.synteny.genename', 'w') as synWriteFile:
@@ -82,8 +82,7 @@ class processFinalFilter:
                     block = temp[0].split(':')[0]
                     if block in block_list_copy.keys():
                         block_list_copy[block] += 1
-                        synWriteFile.write(
-                            block + ':' + str(block_list_copy[block]) + ':' + temp[0].split(':')[-1] + ' ')
+                        synWriteFile.write(block + ':' + str(block_list_copy[block]) + ':'  + temp[0].split(':')[2] + ':'  + temp[0].split(':')[3] + ' ')
                         synWriteFile.write(' '.join(temp[1:]) + ' \n')
 
         return

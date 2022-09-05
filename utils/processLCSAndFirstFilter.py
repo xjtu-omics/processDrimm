@@ -185,8 +185,8 @@ class processLCSAndFirstFilter:
                     else:
                         genename = species_all_sequences_name[i][chr][start:end + 1]
                         genesequence = species_all_sequences[i][chr][start:end + 1]
-                    outfile.write(block + ':' + str(block_count) + ':chr_' + chr + ' ')
-                    outfile_name.write(block + ':' + str(block_count) + ':chr_' + chr + ' ')
+                    outfile.write(block + ':' + str(block_count) + ':chr_' + chr + ':' + block_stand + ' ')
+                    outfile_name.write(block + ':' + str(block_count) + ':chr_' + chr + ':' + block_stand + ' ' )
                     for l in genename:
                         outfile_name.write(l + ' ')
                     outfile_name.write('\n')
