@@ -32,7 +32,7 @@ sp_ratio = [2,4,2,2,2]
 运行drimm.exe
 
 <div align="center">
-<img src="https://s1.328888.xyz/2022/04/23/2R9HB.png">
+<img src="https://i.postimg.cc/Kv7B9KMk/drimm.png">
 </div>
 
 DRIMM-synteny的输入：
@@ -108,7 +108,7 @@ processDrimm首先将blocks文件进行拆分，得到各个物种的.block文�
   # blocks.txt中共线块ID和同源基因的对应关系
   ```
 
-  ![LCS matching](https://s1.328888.xyz/2022/06/16/pxYEZ.png)
+  ![LCS.png](https://i.postimg.cc/Qd053RSj/LCS.png)
 
   <div align=center><b>图1</b> 共线块完整同源基因序列的构建。</div>
 
