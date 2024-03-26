@@ -1,4 +1,4 @@
-# 获得IAGS input (windows)
+# 获得IAGS input 
 
 IAGS所使用的block文件可通过DRIMM-synteny生成。
 
@@ -25,21 +25,44 @@ sp_ratio = [2,4,2,2,2]
 
 随后将所有的.sequence文件进行合并，得到drimm.sequence文件作为DRIMM-synteny的输入。
 
-## 2.运行DRIMM-synteny (drimm.exe)
+## 2.运行DRIMM-synteny  
 
-+ 在./drimm路径下使用`dotnet publish -c Release -r win-x64`进行编译得到drimm.exe(生成于./drimm/drimm/bin/Release/netcoreapp3.1/win-x64)
++ 方式一：Windows平台
 
-运行drimm.exe
+  + 在./drimm路径下使用`dotnet publish -c Release -r win-x64`进行编译得到drimm.exe(生成于./drimm/drimm/bin/Release/netcoreapp3.1/win-x64)
 
-<div align="center">
-<img src="https://i.postimg.cc/Kv7B9KMk/drimm.png">
-</div>
+  运行drimm.exe
 
-DRIMM-synteny的输入：
-+ drimm.sequence文件路径
-+ 输出目录
-+ cycleLengthThreshold控制共线块的连续性(默认值为20)
-+ dustThreshold控制基因家族大小的上限，会将同源基因个数中超过这个上限的基因家族进行过滤。对于上面的例子，各个物种的目标拷贝数为2,4,2,2,2，所以dustThreshold设置为13(2+4+2+2+2+1)
+  <div align="center">
+  <img src="https://i.postimg.cc/Kv7B9KMk/drimm.png">
+  </div>
+
+  DRIMM-synteny的输入：
+  + drimm.sequence文件路径
+  + 输出目录
+  + cycleLengthThreshold控制共线块的连续性(默认值为20)
+  + dustThreshold控制基因家族大小的上限，会将同源基因个数中超过这个上限的基因家族进行过滤。对于上面的例子，各个物种的目标拷贝数为2,4,2,2,2，所以dustThreshold设置为13(2+4+2+2+2+1)
+
++ 方式二：Linux平台  
+
+  Linux环境中，在drimm_Linux路径中使用Mono运行DRIMM-Synteny
+
+  + 安装Mono
+    ```shell
+    sudo apt install mono-devel
+    ```
+    或者使用conda
+    ```shell
+    conda install mono -c conda-forge
+    ```
+  + 运行DRIMM-Synteny
+    ```shell
+    mono Program.exe Input_Path Output_Path 20 10
+    ```
+    
+    通过命令行输入参数，依次为：mono命令，Program.exe(DRIMM-Synteny)，输入路径，输出路径，CycleLength，Dustlength。
+  
+  *注意：如果无法运行，请自行编译Program.cs文件。编译方式：安装Mono后，执行以下命令`msc Program.cs`自行生成Program.exe*
 
 DRIMM-synteny的输出：
 + synteny.txt
